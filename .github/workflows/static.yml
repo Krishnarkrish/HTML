@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Greeting</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #000; /* Black color */
+            color: #fff; /* White text color */
+            overflow: hidden;
+            position: relative;
+        }
+
+        #date {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        #headline {
+            margin-bottom: 20px; /* Add space below the headline */
+        }
+
+        #birthdayMessage {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            margin-bottom: 20px; /* Add space below the birthday message */
+        }
+
+        .star {
+            position: absolute;
+            background-color: #f6f6f6;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            animation: twinkle 1s infinite;
+        }
+
+        .snowflake {
+            position: absolute;
+            content: "❄️";
+            font-size: 12px;
+            color: #fff;
+            animation: snowfall 5s linear infinite;
+        }
+
+        .birthdayImage {
+            max-width: 100%;
+            max-height: 70vh;
+            animation: bounce 2s infinite alternate;
+        }
+
+        #clock {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes snowfall {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="date">30.11.2024</div>
+<div id="clock"></div>
+
+<h1 id="headline">🎊Birthday Greeting🎊</h1>
+
+<div id="birthdayMessage">
+    <script>
+        function sayHappyBirthday() {
+            var message = "🎉✨ Wishing you a day filled with joy, laughter, and all the wonderful moments you deserve. Cheers to another year of amazing adventure!";
+            alert(message);
+
+            // Display the message with fade-in effect
+            var birthdayMessage = document.getElementById("birthdayMessage");
+            birthdayMessage.textContent = message;
+            birthdayMessage.style.opacity = 1;
+        }
+
+        // Call the function when the page loads
+        window.onload = sayHappyBirthday;
+
+        // Generate stars and snowflakes
+        function generateStarsAndSnowflakes() {
+            const starsContainer = document.createElement("div");
+            starsContainer.style.position = "fixed";
+            starsContainer.style.width = "100%";
+            starsContainer.style.height = "100%";
+            starsContainer.style.pointerEvents = "none";
+            document.body.appendChild(starsContainer);
+
+            // Generate stars
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement("div");
+                star.className = "star";
+                star.style.left = Math.random() * 100 + "vw";
+                star.style.top = Math.random() * 100 + "vh";
+                starsContainer.appendChild(star);
+            }
+
+            // Generate snowflakes
+            for (let i = 0; i < 50; i++) {
+                const snowflake = document.createElement("div");
+                snowflake.className = "snowflake";
+                snowflake.style.left = Math.random() * 100 + "vw";
+                snowflake.style.top = Math.random() * 100 + "vh";
+                starsContainer.appendChild(snowflake);
+            }
+        }
+
+        // Call the function to generate stars and snowflakes
+        generateStarsAndSnowflakes();
+
+        // Update the clock
+        function updateClock() {
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+
+            // Add leading zero if needed
+            hours = hours < 10 ? "0" + hours : hours;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            var clock = document.getElementById("clock");
+            clock.textContent = hours + ":" + minutes + ":" + seconds;
+
+            // Update every second
+            setTimeout(updateClock, 1000);
+        }
+
+        // Call the function to start the clock
+        updateClock();
+    </script>
+</div>
+
+<!-- Add your image here -->
+🎂Happy Birthday Yin Thuzar Win🥳
+
+</body>
+</html>
+
+  
